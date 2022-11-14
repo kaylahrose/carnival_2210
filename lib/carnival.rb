@@ -27,10 +27,10 @@ class Carnival
   end
 
   def summary
+    # see spec test for expected return
     visitors = rides.map do |ride|
       ride.rider_log.keys
     end.flatten.uniq
-    # require 'pry'; binding.pry
 
     v = {}
     visitors.each { |visitor| v[visitor.name] = visitor.details }

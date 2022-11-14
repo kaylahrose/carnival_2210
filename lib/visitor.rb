@@ -27,7 +27,7 @@ class Visitor
   end
 
   def details
-    {favorite_ride: rides.max_by{|k,v| v}[0].name,
-     total_spent: budget - spending_money}
+    { favorite_ride: rides.max_by { |_k, v| v }[0].name,
+      total_spent: budget - spending_money }
   end
 end

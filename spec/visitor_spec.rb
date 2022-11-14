@@ -11,7 +11,6 @@ RSpec.describe Visitor do
 
   it '#add_preference' do
     visitor1 = Visitor.new('Bruce', 54, '$10')
-
     visitor1.add_preference(:gentle)
     visitor1.add_preference(:water)
 
@@ -33,6 +32,7 @@ RSpec.describe Visitor do
     visitor1 = Visitor.new('Bruce', 54, '$10')
     visitor1.pay(1)
     visitor1.pay(1)
+
     expect(visitor1.spending_money).to eq(8)
   end
 end
