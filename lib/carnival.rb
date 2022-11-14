@@ -21,4 +21,8 @@ class Carnival
       ride_a.total_revenue <=> ride_b.total_revenue       # ride.rider_log.values.sum
     end
   end
+
+  def total_revenue
+    rides.sum { |ride| ride.total_revenue }
+  end
 end
