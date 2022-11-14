@@ -3,7 +3,7 @@ class Ride
               :min_height,
               :admission_fee,
               :excitement,
-              :total_revenue, 
+              :total_revenue,
               :rider_log
 
   def initialize(info)
@@ -16,14 +16,10 @@ class Ride
   end
 
   def board_rider(visitor)
-    # require 'pry'; binding.pry
-    if visitor.preferences.any? {|preference| preference  == excitement} && visitor.height >= min_height
-      visitor.pay(admission_fee)
-      rider_log[visitor] += 1
+    return unless visitor.preferences.any? { |preference| preference == excitement } && visitor.height >= min_height
 
-      @total_revenue += admission_fee
-  end
-
-  
+    visitor.pay(admission_fee)
+    rider_log[visitor] += 1
+    @total_revenue += admission_fee
   end
 end
