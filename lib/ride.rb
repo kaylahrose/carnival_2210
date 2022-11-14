@@ -21,5 +21,11 @@ class Ride
     visitor.pay(admission_fee)
     rider_log[visitor] += 1
     @total_revenue += admission_fee
+    visitor.ride_count(self)
+  end
+  
+  def details
+    {riders: rider_log.keys.map{|rider| rider.name},
+     total_revenue: @total_revenue}
   end
 end

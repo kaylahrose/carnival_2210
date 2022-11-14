@@ -18,11 +18,26 @@ class Carnival
 
   def most_profitable_ride
     @rides.max do |ride_a, ride_b|
-      ride_a.total_revenue <=> ride_b.total_revenue       # ride.rider_log.values.sum
+      ride_a.total_revenue <=> ride_b.total_revenue
     end
   end
 
   def total_revenue
     rides.sum { |ride| ride.total_revenue }
+  end
+
+  def summary
+    visitors = rides.map do |ride|
+      ride.rider_log.keys
+    end.uniq.flatten
+
+    v = {}
+    visitors.each { |visitor| v[visitor.name] = visitor.details }
+    r = {}
+    rides.each { |ride| r[ride.name] = ride.details }
+    { visitor_count: visitors.count,
+      revenure_earned: total_revenue,
+      visitor_details: v,
+      ride_details: r }
   end
 end

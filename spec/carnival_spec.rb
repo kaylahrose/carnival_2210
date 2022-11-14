@@ -103,6 +103,8 @@ RSpec.describe Carnival do
     expect(carnival.total_revenue).to eq(17)
   end
 
+  #   it
+
   it '#summary' do
     carnival = Carnival.new(3)
     ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
@@ -128,18 +130,18 @@ RSpec.describe Carnival do
     ride3.board_rider(visitor3)
 
     expect(carnival.summary).to eq({ visitor_count: 3,
-                                     revenure_earned: 17,
-                                     visitor_details: { visitor1: { favorite_ride: ride1,
-                                                                    total_spent: 19 },
-                                                        visitor2: { favorite_ride: ride1,
-                                                                    total_spent: 19 },
-                                                        visitor3: { favorite_ride: ride1,
-                                                                    total_spent: 19 } },
-                                     ride_details: { ride1: { riders: [visitor1, visitor2],
-                                                              total_revenue: 3 },
-                                                     ride2: { riders: [],
-                                                              total_revenue: 0 },
-                                                     ride3: { riders: [visitor3],
-                                                              total_revenue: 2 } } })
+                                     revenure_earned: carnival.total_revenue,
+                                     visitor_details: { 'Bruce' => { favorite_ride: ride1.name,
+                                                                     total_spent: 2 },
+                                                        'Tucker' => { favorite_ride: ride1.name,
+                                                                      total_spent: 1 },
+                                                        'Penny' => { favorite_ride: ride3.name,
+                                                                     total_spent: 2 } },
+                                     ride_details: { 'Carousel' => { riders: [visitor1.name, visitor2.name],
+                                                                     total_revenue: 3 },
+                                                     'Ferris Wheel' => { riders: [],
+                                                                         total_revenue: 0 },
+                                                     'Roller Coaster' => { riders: [visitor3.name],
+                                                                           total_revenue: 2 } } })
   end
 end
