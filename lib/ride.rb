@@ -16,8 +16,12 @@ class Ride
   end
 
   def board_rider(visitor)
-    visitor.pay(admission_fee)
-    rider_log[visitor] += 1
     # require 'pry'; binding.pry
+    if visitor.preferences.any? {|preference| preference  == excitement} && visitor.height >= min_height
+      visitor.pay(admission_fee)
+      rider_log[visitor] += 1
+
+      @total_revenue += admission_fee
+  end
   end
 end
