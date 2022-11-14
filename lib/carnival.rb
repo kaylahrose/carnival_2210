@@ -29,7 +29,8 @@ class Carnival
   def summary
     visitors = rides.map do |ride|
       ride.rider_log.keys
-    end.uniq.flatten
+    end.flatten.uniq
+    # require 'pry'; binding.pry
 
     v = {}
     visitors.each { |visitor| v[visitor.name] = visitor.details }

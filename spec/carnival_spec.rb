@@ -143,5 +143,24 @@ RSpec.describe Carnival do
                                                                          total_revenue: 0 },
                                                      'Roller Coaster' => { riders: [visitor3.name],
                                                                            total_revenue: 2 } } })
+    5.times { ride3.board_rider(visitor3) }
+    visitor3.add_preference(:gentle)
+
+    ride1.board_rider(visitor3)
+
+    expect(carnival.summary).to eq({ visitor_count: 3,
+                                     revenure_earned: carnival.total_revenue,
+                                     visitor_details: { 'Bruce' => { favorite_ride: ride1.name,
+                                                                     total_spent: 2 },
+                                                        'Tucker' => { favorite_ride: ride1.name,
+                                                                      total_spent: 1 },
+                                                        'Penny' => { favorite_ride: ride3.name,
+                                                                     total_spent: 13} },
+                                     ride_details: { 'Carousel' => { riders: [visitor1.name, visitor2.name, visitor3.name],
+                                                                     total_revenue: 4 },
+                                                     'Ferris Wheel' => { riders: [],
+                                                                         total_revenue: 0 },
+                                                     'Roller Coaster' => { riders: [visitor3.name],
+                                                                           total_revenue: 12 } } })
   end
 end
