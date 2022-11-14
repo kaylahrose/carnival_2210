@@ -23,5 +23,7 @@ class Ride
 
       @total_revenue += admission_fee
   end
+
+  
   end
 end
